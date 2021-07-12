@@ -1,4 +1,4 @@
-import 'package:basic2/repository/remote/UserService.dart';
+import 'package:flutter_mvvm/repository/remote/UserService.dart';
 import 'package:get/get.dart';
 
 class UserViewModel extends GetxController {

@@ -1,5 +1,5 @@
 
-import 'package:basic2/repository/model/response/User.dart';
+import 'package:flutter_mvvm/repository/model/response/User.dart';
 
 class UserDao {
   static bool insertUsers(List<User> users) {

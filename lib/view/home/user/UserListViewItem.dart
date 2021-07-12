@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
-import 'package:basic2/repository/model/response/User.dart';
+import 'package:flutter_mvvm/repository/model/response/User.dart';
 
 class UserListViewItem extends StatelessWidget {
   UserListViewItem(this.user);

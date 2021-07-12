@@ -1,7 +1,7 @@
 
 import 'dart:convert';
 
-import 'package:basic2/repository/model/response/User.dart';
+import 'package:flutter_mvvm/repository/model/response/User.dart';
 
 import 'Api.dart';
 

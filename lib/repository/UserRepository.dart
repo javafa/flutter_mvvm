@@ -1,5 +1,5 @@
 
-import 'package:basic2/repository/remote/UserService.dart';
+import 'package:flutter_mvvm/repository/remote/UserService.dart';
 
 import 'local/UserDao.dart';
 import 'model/response/User.dart';

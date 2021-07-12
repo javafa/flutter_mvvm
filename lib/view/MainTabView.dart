@@ -1,7 +1,7 @@
-import 'package:basic2/view/home/HomeTab.dart';
-import 'package:basic2/view/study/StudyTab.dart';
-import 'package:basic2/view/study_analysis/StudyAnalysisTab.dart';
-import 'package:basic2/view/study_history/StudyHistoryTab.dart';
+import 'package:flutter_mvvm/view/home/HomeTab.dart';
+import 'package:flutter_mvvm/view/study/StudyTab.dart';
+import 'package:flutter_mvvm/view/study_analysis/StudyAnalysisTab.dart';
+import 'package:flutter_mvvm/view/study_history/StudyHistoryTab.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

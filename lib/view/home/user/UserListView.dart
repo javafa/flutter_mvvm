@@ -1,5 +1,6 @@
-import 'package:basic2/resource/color/MainColor.dart';
-import 'package:basic2/viewmodel/home/UserViewModel.dart';
+
+import 'package:flutter_mvvm/resource/color/MainColor.dart';
+import 'package:flutter_mvvm/viewmodel/home/UserViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,23 +12,23 @@ class UserListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx(() => userViewModel.isLoading.value ? _progress() : _listBuilder()),
+      body: Obx(() => userViewModel.isLoading.value ? _progress() : _listView()),
       floatingActionButton: _floatingButton(),
     );
   }
 
-  _listBuilder() => ListView.builder(
+  _listView() => ListView.builder(
     itemCount: userViewModel.userList.length,
-    itemBuilder: (context, index) => Column(children:[_item(index), _divider()])
+    itemBuilder: (context, index) => Column(children:<Widget>[_item(index), _divider()])
   );
 
-  _item(index) => Flexible(child: UserListViewItem(userViewModel.userList[index]));
+  _item(index) => UserListViewItem(userViewModel.userList[index]);
 
   _divider() => Container(color: MainColor.grey200, height: 2);
 
   _progress() => Center(child: CircularProgressIndicator());
 
-  FloatingActionButton _floatingButton() => FloatingActionButton.extended(
+  _floatingButton() => FloatingActionButton.extended(
     backgroundColor: MainColor.custom,
     foregroundColor: Colors.black,
     onPressed: () => userViewModel.fetchUsers(),
