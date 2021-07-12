@@ -24,9 +24,17 @@ class UserListViewItem extends StatelessWidget {
     );
   }
 
-  _image(url) => FadeInImage.memoryNetwork(
-    placeholder: kTransparentImage, image: url,
+  _image(url) => Container(
+    child: AspectRatio(
+      aspectRatio: 16 / 9,
+      child: FadeInImage.memoryNetwork(
+        placeholder: kTransparentImage,
+        image: url,
+        fit: BoxFit.fitWidth,
+      ),
+    ),
   );
+
 
   _spacer() => SizedBox(width: 10);
 
