@@ -7,8 +7,8 @@ mvvm example
 This project is a starting point for a Flutter application.
 
 ## Dependencies
-get:
-http:
-json_annotation:
-provider:
-transparent_image:
+get:   
+http:   
+json_annotation:   
+provider:   
+transparent_image:   
