@@ -1,6 +1,6 @@
 
 import 'package:flutter_mvvm/resource/color/MainColor.dart';
-import 'package:flutter_mvvm/viewmodel/home/UserViewModel.dart';
+import 'package:flutter_mvvm/viewmodel/home/user/UserViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +13,6 @@ class UserListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() => userViewModel.isLoading.value ? _progress() : _listView()),
-      floatingActionButton: _floatingButton(),
     );
   }
 
@@ -27,12 +26,4 @@ class UserListView extends StatelessWidget {
   _divider() => Container(color: MainColor.grey200, height: 2);
 
   _progress() => Center(child: CircularProgressIndicator());
-
-  _floatingButton() => FloatingActionButton.extended(
-    backgroundColor: MainColor.custom,
-    foregroundColor: Colors.black,
-    onPressed: () => userViewModel.fetchUsers(),
-    icon: Icon(Icons.refresh),
-    label: Text("refresh".tr),
-  );
 }

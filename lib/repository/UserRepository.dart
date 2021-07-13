@@ -1,4 +1,5 @@
 
+import 'package:flutter_mvvm/repository/model/response/UserResponse.dart';
 import 'package:flutter_mvvm/repository/remote/UserService.dart';
 
 import 'local/UserDao.dart';
@@ -6,7 +7,7 @@ import 'model/response/User.dart';
 
 class UserRepository {
 
-  static Future<List<User>?> getUsers() async {
+  static Future<UserResponse?> getUsers() async {
 
     try {
       var users = await UserService.getUsers();

@@ -14,9 +14,9 @@ class UserViewModel extends GetxController {
   void fetchUsers() async {
     try {
       isLoading(true);
-      var users = await UserService.getUsers();
-      if (users != null) {
-        userList.assignAll(users);
+      var userResponse = await UserService.getUsers();
+      if (userResponse != null) {
+        userList.assignAll(userResponse.data ?? List.empty());
       }
     } finally {
       isLoading(false);

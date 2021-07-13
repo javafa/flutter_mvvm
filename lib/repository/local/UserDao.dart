@@ -1,5 +1,6 @@
 
 import 'package:flutter_mvvm/repository/model/response/User.dart';
+import 'package:flutter_mvvm/repository/model/response/UserResponse.dart';
 
 class UserDao {
   static bool insertUsers(List<User> users) {
@@ -9,7 +10,7 @@ class UserDao {
     return true;
   }
 
-  static List<User> loadUsers() {
-    return List<User>.empty();
+  static UserResponse loadUsers() {
+    return UserResponse(null, false, "");
   }
 }
