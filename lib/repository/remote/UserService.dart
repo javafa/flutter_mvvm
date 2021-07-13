@@ -1,19 +1,25 @@
 
 import 'dart:convert';
-
+import 'package:flutter_mvvm/repository/model/response/UserResponse.dart';
 import 'package:flutter_mvvm/repository/model/response/User.dart';
 
 import 'Api.dart';
 
 class UserService {
 
-  static Future<List<User>?> getUsers() async {
-    var response = await Api.client.get(Uri.parse('https://api.github.com/users'));
+  static Future<UserResponse?> getUsers() async {
+    var response = await Api.get('/crud');
     if (response.statusCode == 200) {
-      var users = jsonDecode(response.body)
-        .map<User>((item) => User.fromJson(item))
-        .toList();
-      return users;
+      return UserResponse.fromJson(jsonDecode(response.body));
+    } else {
+      return null;
+    }
+  }
+
+  static Future<UserResponse?> postUser(User user) async {
+    var response = await Api.post('/crud', body: user.toJson());
+    if (response.statusCode == 200) {
+      return UserResponse.fromJson(jsonDecode(response.body));
     } else {
       return null;
     }
