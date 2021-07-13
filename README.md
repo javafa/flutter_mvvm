@@ -1,6 +1,6 @@
 # flutter mvvm
 
-mvvm example
+Dart is still shit but Flutter is not bad. 13th July 2021
 
 ## Getting Started
 
