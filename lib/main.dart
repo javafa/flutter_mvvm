@@ -13,7 +13,9 @@ class Root extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home : MainTabView(),
+      home : SafeArea(
+          child: MainTabView()
+      ),
       translations: I18n(),
       fallbackLocale: Locale('en', 'US'),
     );

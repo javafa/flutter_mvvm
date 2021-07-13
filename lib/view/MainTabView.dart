@@ -7,50 +7,95 @@ import 'package:flutter_mvvm/view/study_history/StudyHistoryTab.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class MainTabView extends StatelessWidget {
+class MainTabView extends StatefulWidget {
+  @override
+  _MainTabView createState() => _MainTabView();
+}
 
-  double tabWidth = 140.0;
-  double tabHeight = 80.0;
+class _MainTabView extends State<MainTabView> with SingleTickerProviderStateMixin {
 
-  List<String> tabList = ["home".tr, "study".tr, "study history".tr, "study analysis".tr];
+  double _tabWidth = 140.0;
+  double _tabHeight = 80.0;
+
+  late TabController _tabController;
+  List<String> _tabList = ["home".tr, "study".tr, "study history".tr, "study analysis".tr];
+
+  @override
+  void initState() {
+    _tabController = new TabController(length: _tabList.length, vsync: this);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: tabList.length,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          toolbarHeight: tabHeight,
-          bottom: _tabBarView(tabList),
-        ),
-        body: TabBarView(
-          children: [
-            HomeTab(),
-            StudyTab(),
-            StudyHistoryTab(),
-            StudyAnalysisTab(),
-          ],
-        ),
-      ),
+    return Scaffold(
+      // appBar: AppBar(
+      //   backgroundColor: Colors.black,
+      //   toolbarHeight: tabHeight,
+      //   bottom: _tabBarView(tabList),
+      // ),
+      body: Column (
+        children: [
+          _titleBarView(_tabList),
+          Expanded(
+            child: TabBarView(
+              children: [
+                HomeTab(),
+                StudyTab(),
+                StudyHistoryTab(),
+                StudyAnalysisTab(),
+              ],
+              controller: _tabController,
+            ),
+          )
+        ]
+      )
     );
   }
 
-  _tabBarView(List<String> labels) {
+  _titleBarView(tabList) {
+    return Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: Container(
+              height: _tabHeight,
+              color: Colors.black
+          )
+        ),
+        Container(
+          height: _tabHeight,
+          color: Colors.black,
+          child: _tabBar(tabList),
+        ),
+        Expanded(
+          flex: 1,
+          child: Container(
+              height: _tabHeight,
+              color: Colors.black
+          )
+        ),
+      ],
+    );
+  }
+
+  _tabBar(List<String> labels) {
     return TabBar(
-        isScrollable: true,
-        indicatorColor: Colors.white,
-        labelColor: Colors.white,
-        unselectedLabelColor: Colors.white38,
-        tabs: List<Tab>.generate(labels.length, (idx) => _tabView(labels[idx])),
+      isScrollable: true,
+      labelColor: Colors.white,
+      unselectedLabelColor: Colors.white38,
+      indicatorColor: Colors.white,
+      tabs: List<Tab>.generate(labels.length, (idx) => _tab(labels[idx])),
+      controller: _tabController,
     );
   }
 
-  _tabView(label) => Tab(
+  _tab(label) => Tab(
     child: Container(
       child: Text(label),
       alignment:Alignment.center,
-      width: tabWidth,
-      height: tabHeight)
+      width: _tabWidth,
+      height: _tabHeight,
+    )
   );
 }
